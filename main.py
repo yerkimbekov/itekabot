@@ -352,9 +352,9 @@ def send_message(message, text):
 # Building Start Menu
 def start_menu():
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    choice_search = types.KeyboardButton("🔍 Поиск")
-    choice_city = types.KeyboardButton("🔁 Сменить город")
-    choice_help = types.KeyboardButton("🆘 Помощь")
+    choice_search = types.KeyboardButton("🔍Поиск")
+    choice_city = types.KeyboardButton("🔁Сменить город")
+    choice_help = types.KeyboardButton("🆘Помощь")
     markup.add(choice_search,choice_city,choice_help)
     return markup
 
@@ -366,7 +366,7 @@ def correction(message):
         if (utf8len("_" + i['word']) > 63):
             continue
         correction_inline.add(types.InlineKeyboardButton(i['word'], callback_data = "_" + str(i['word'])))
-    send_message_keyboard(message, "❔ Мы ничего не нашли по запросу \"{}\"\nВозможно вы имели ввиду:".format(message.text), correction_inline)  
+    send_message_keyboard(message, "❔Мы ничего не нашли по запросу \"{}\"\nВозможно вы имели ввиду:".format(message.text), correction_inline)  
 
 
 # Showing Results After Correction
@@ -404,7 +404,7 @@ def start(message):
     if get_users_city_id(message.from_user.id) == "-1":
         select_city(message, False)
         return
-    send_message_keyboard(message, "Привет! Я чат бот i-teka по поиску лекарств. ✋😃\nЯ работаю 24/7, без выходных. Я помогу Вам найти нужное лекарство в аптеках Вашего города!", start_menu())
+    send_message_keyboard(message, "Привет! Я чат бот i-teka по поиску лекарств в твоем городе. ✋😃\nЯ работаю 24/7, без выходных. Я помогу Вам найти нужное лекарство в аптеках Вашего города!", start_menu())
 
 
 @bot.message_handler(content_types=['text'])
